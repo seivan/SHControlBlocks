@@ -206,8 +206,10 @@
 
 -(NSHashTable *)tableControls; {
   NSHashTable * tableControls =  [[SHControlBlocksManager sharedManager].mapBlocks objectForKey:self];
-  if (tableControls == nil)
-    self.tableControls = [NSHashTable hashTableWithOptions:NSPointerFunctionsStrongMemory];
+  if (tableControls == nil){
+    tableControls = [NSHashTable hashTableWithOptions:NSPointerFunctionsStrongMemory];
+    self.tableControls = tableControls;
+  }
 
   return tableControls;
 }

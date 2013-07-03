@@ -1,5 +1,5 @@
 PODS:
-  - SHControlBlocks (0.1.0)
+  - SHControlBlocks (1.0.1)
   - SHObjectUserInfo (1.0.0)
   - SHSegueBlocks (1.1.1):
     - SHObjectUserInfo (~> 1.0.0)
@@ -13,8 +13,8 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  SHControlBlocks: 614e4e6c1cf5a23a069a3e7106e7c556d002501f
+  SHControlBlocks: 3cd5cb4e8a127e416da89569ea0d5156a9e09c19
   SHObjectUserInfo: 46ec0f0d5131abff9fabdba55f4a3d012de3c646
   SHSegueBlocks: 6bcadca3c10a916a0047b7123fa035e38f40cf34
 
-COCOAPODS: 0.20.2
+COCOAPODS: 0.21.0
