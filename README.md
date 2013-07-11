@@ -36,11 +36,11 @@ Setup
 Put this either in specific files or your project prefix file
 
 ```objective-c
-#import 'UIControl+SHControlBlocks.h'
+#import "UIControl+SHControlBlocks.h"
 ```
 or
 ```objective-c
-#import 'SHControlBlocks.h'
+#import "SHControlBlocks.h"
 ```
 
 API
