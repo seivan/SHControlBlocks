@@ -16,8 +16,8 @@
 -(void)SH_memoryDebugger;
 @end
 @implementation SHControlBlocksManager
-#pragma mark -
-#pragma mark Init & Dealloc
+
+#pragma mark - Init & Dealloc
 -(instancetype)init; {
   self = [super init];
   if (self) {
@@ -38,8 +38,8 @@
   return _sharedInstance;
   
 }
-#pragma mark -
-#pragma mark Debugger
+
+#pragma mark - Debugger
 -(void)SH_memoryDebugger; {
   double delayInSeconds = 2.0;
   dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
@@ -93,8 +93,8 @@
 
 
 @implementation UIControl (SHControlBlocks)
-#pragma mark -
-#pragma mark Add block
+
+#pragma mark - Add block
 -(void)SH_addControlEvents:(UIControlEvents)controlEvents
                  withBlock:(SHControlEventBlock)theBlock; {
 
@@ -121,8 +121,8 @@
 }
 
 
-#pragma mark -
-#pragma mark Remove block
+
+#pragma mark - Remove block
 -(void)SH_removeControlEventTouchUpInside; {
   [self SH_removeBlocksForControlEvents:UIControlEventTouchUpInside];
 }
@@ -151,8 +151,8 @@
   self.tableControls = nil;
 }
 
-#pragma mark -
-#pragma mark Helpers
+
+#pragma mark - Helpers
 -(NSSet *)SH_blocksForControlEvents:(UIControlEvents)theControlEvents; {
   SHControl * control = [self shControlForControlEvents:theControlEvents];
   NSSet * setOfBlocks = control.tableBlocks.setRepresentation;
@@ -175,8 +175,8 @@
 #pragma mark Properties
 
 
-#pragma mark -
-#pragma mark Getters
+
+#pragma mark - Getters
 -(NSDictionary *)SH_controlBlocks; {
   NSMutableDictionary * controlBlocks = @{}.mutableCopy;
   for (SHControl * control in self.tableControls) {
@@ -190,8 +190,8 @@
   return control.tableBlocks.count > 0;
 }
 
-#pragma mark -
-#pragma mark Privates
+
+#pragma mark - Privates
 
 -(SHControl *)shControlForControlEvents:(UIControlEvents)theControlEvents; {
   SHControl * shControl = nil;
