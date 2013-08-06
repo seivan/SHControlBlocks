@@ -2,10 +2,10 @@ Pod::Spec.new do |s|
   name           = "SHControlBlocks"
   url            = "https://github.com/seivan/#{name}"
   git_url        = "#{url}.git"
-  s.name         = name
-  version        = "1.0.1"
+  version        = "1.1.0"
   source_files   = "#{name}/**/*.{h,m}"
 
+  s.name         = name
   s.version      = version
   s.summary      = "Prefixed UIControl category with blocks, auto-removed. Swizzle free!"
   s.description  = <<-DESC
