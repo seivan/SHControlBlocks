@@ -1,5 +1,9 @@
 SHControlBlocks
 ==========
+[![Build Status](https://travis-ci.org/seivan/SHControlBlocks.png?branch=master)](https://travis-ci.org/seivan/SHControlBlocks)
+[![Version](http://cocoapod-badges.herokuapp.com/v/SHControlBlocks/badge.png)](http://cocoadocs.org/docsets/SHControlBlocks)
+[![Platform](http://cocoapod-badges.herokuapp.com/p/SHControlBlocks/badge.png)](http://cocoadocs.org/docsets/SHControlBlocks)
+
 
 Overview
 --------
