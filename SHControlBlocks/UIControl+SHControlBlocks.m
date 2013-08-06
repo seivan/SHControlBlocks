@@ -156,6 +156,7 @@
 -(NSSet *)SH_blocksForControlEvents:(UIControlEvents)theControlEvents; {
   SHControl * control = [self shControlForControlEvents:theControlEvents];
   NSSet * setOfBlocks = control.tableBlocks.setRepresentation;
+  if(setOfBlocks == nil) setOfBlocks = [NSSet set];
   return setOfBlocks;
 }
 
