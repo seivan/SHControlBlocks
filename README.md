@@ -4,6 +4,7 @@ SHControlBlocks
 [![Version](http://cocoapod-badges.herokuapp.com/v/SHControlBlocks/badge.png)](http://cocoadocs.org/docsets/SHControlBlocks)
 [![Platform](http://cocoapod-badges.herokuapp.com/p/SHControlBlocks/badge.png)](http://cocoadocs.org/docsets/SHControlBlocks)
 
+> This pod is used by [`SHUIKitBlocks`](https://github.com/seivan/SHUIKitBlocks) as part of many components covering to plug the holes missing from Foundation, UIKit, CoreLocation, GameKit, MapKit and other aspects of an iOS application's architecture.
 
 Overview
 --------
