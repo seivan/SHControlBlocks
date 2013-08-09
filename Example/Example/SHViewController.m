@@ -10,54 +10,54 @@
 #import "SHSegueBlocks.h"
 #import "SHViewController.h"
 #import "SHControlBlocks.h"
-@interface SHViewController ()
-@property(nonatomic,strong) UIButton * button;
 
+@interface SHViewController ()
+<UICollectionViewDataSource, UICollectionViewDelegate>
+@property(nonatomic,strong) IBOutlet UICollectionView * collectionView;
 @end
 
 @implementation SHViewController
 
 -(void)viewDidLoad; {
   [super viewDidLoad];
-  self.button = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-  [self.view addSubview:self.button];
+  UIRefreshControl * refreshControl = [[UIRefreshControl alloc] init];
+  [self.collectionView addSubview:refreshControl];
+  self.collectionView.alwaysBounceVertical = YES;
+  
+
+  [refreshControl SH_addControlEvents:UIControlEventValueChanged withBlock:^(UIControl *sender) {
+    [refreshControl beginRefreshing];
+
+    double delayInSeconds = 2.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+      [refreshControl endRefreshing];
+    });
+    
+  }];
+  [refreshControl sendActionsForControlEvents:UIControlEventValueChanged];
+  
+
 
 }
 
 -(void)viewDidAppear:(BOOL)animated; {
   [super viewDidAppear:animated];
-  __block UIButton * button = self.button;
-  __weak typeof(self) weakSelf = self;
-  [button SH_addControlEventTouchUpInsideWithBlock:^(UIControl *sender) {
-    [weakSelf performSegueWithIdentifier:@"second" sender:nil];
-    NSLog(@"first");
-  }];
-  [button SH_addControlEventTouchUpInsideWithBlock:^(UIControl *sender) {
-    NSLog(@"second");
-    [button SH_removeControlEventTouchUpInside];
-    SHBlockAssert(button.SH_controlBlocks.count == 0, @"There should be no controlblocks");
-    SHBlockAssert(button.SH_isTouchUpInsideEnabled == NO, @"Touch up inside should be enabled");
-  }];
-  
-  __block NSUInteger counter = 0;
-  SHControlEventBlock block = ^(UIControl * sender){
-    NSLog(@"SENDER : %@", sender);
-    counter += 1;
-    SHBlockAssert(counter == 1, @"Counter should be 1");
-  };
-  
-  [button SH_addControlEventTouchUpInsideWithBlock:block];
-  [button SH_addControlEventTouchUpInsideWithBlock:block];
-
-  NSSet * controlBlocks = button.SH_controlBlocks[@(UIControlEventTouchUpInside)];
-  
-  SHBlockAssert(button.SH_isTouchUpInsideEnabled, @"Touch up inside should be enabled");
-  SHBlockAssert(button.SH_controlBlocks.count == 1, @"There should be one event");
-  SHBlockAssert(controlBlocks.count == 3, @"There should be three blocks");
 }
 
 -(IBAction)unwinder:(UIStoryboardSegue *)theSegue; {
   
 }
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section; {
+  return 100;
+}
+
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath; {
+  UICollectionViewCell * cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"green" forIndexPath:indexPath];
+  return cell;
+}
+
 
 @end

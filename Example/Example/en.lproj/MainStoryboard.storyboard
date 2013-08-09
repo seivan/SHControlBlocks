@@ -17,7 +17,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sJd-T7-LMH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-454" y="44"/>
+            <point key="canvasLocation" x="-326" y="44"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="5">
@@ -26,11 +26,46 @@
                     <view key="view" contentMode="scaleToFill" id="3">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rZP-tL-NSN">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0C3-1z-Nbc">
+                                    <size key="itemSize" width="139" height="129"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="green" id="gXU-cb-POc">
+                                        <rect key="frame" x="0.0" y="0.0" width="139" height="129"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="139" height="129"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="i7s-7z-7MO" kind="push" identifier="second" id="hhl-eh-VSe"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="2" id="z3C-5o-xET"/>
+                                    <outlet property="delegate" destination="2" id="SXT-VP-7to"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rZP-tL-NSN" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="3Gd-Pk-Tnf"/>
+                            <constraint firstItem="rZP-tL-NSN" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="8z0-Az-zeu"/>
+                            <constraint firstItem="rZP-tL-NSN" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="gVp-mn-eDj"/>
+                            <constraint firstItem="rZP-tL-NSN" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="uI6-fA-HZ5"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="uHk-Rv-Aqg"/>
                     <connections>
-                        <segue destination="i7s-7z-7MO" kind="push" identifier="second" id="iSg-Q5-whL"/>
+                        <outlet property="collectionView" destination="rZP-tL-NSN" id="5ep-Zs-5oE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -73,8 +108,8 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="9Zh-jV-HZB" firstAttribute="top" secondItem="8fg-Uw-jFl" secondAttribute="top" constant="94" id="15e-hT-9c3"/>
                             <constraint firstItem="qL5-4l-czt" firstAttribute="top" secondItem="8fg-Uw-jFl" secondAttribute="top" constant="185" id="A8A-4b-oeK"/>
+                            <constraint firstItem="9Zh-jV-HZB" firstAttribute="top" secondItem="8fg-Uw-jFl" secondAttribute="top" constant="93" id="Yj6-NM-fyH"/>
                             <constraint firstItem="qL5-4l-czt" firstAttribute="centerX" secondItem="8fg-Uw-jFl" secondAttribute="centerX" type="default" id="lVZ-gs-GWr"/>
                             <constraint firstItem="9Zh-jV-HZB" firstAttribute="leading" secondItem="8fg-Uw-jFl" secondAttribute="leading" constant="31" id="ztf-2g-iJF"/>
                         </constraints>
@@ -94,7 +129,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9fB-Zm-pi9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="554" y="32"/>
+            <point key="canvasLocation" x="554" y="44"/>
         </scene>
     </scenes>
     <classes>
@@ -111,11 +146,17 @@
         <class className="SHViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SHViewController.h"/>
             <relationships>
-                <relationship kind="action" name="unwinder:" candidateClass="UIStoryboardSegue"/>
+                <relationship kind="outlet" name="collectionView" candidateClass="UICollectionView"/>
             </relationships>
         </class>
-        <class className="UIStoryboardSegue" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
+        <class className="UICollectionReusableView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
+        </class>
+        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
+        </class>
+        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
