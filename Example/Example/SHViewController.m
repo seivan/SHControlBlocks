@@ -10,35 +10,47 @@
 #import "SHSegueBlocks.h"
 #import "SHViewController.h"
 #import "SHControlBlocks.h"
-
+typedef void (^SHFetchCompletionBlock)();
 @interface SHViewController ()
 <UICollectionViewDataSource, UICollectionViewDelegate>
 @property(nonatomic,strong) IBOutlet UICollectionView * collectionView;
++(void)fetchUsersWithBlock:(SHFetchCompletionBlock)theBlock;
 @end
 
 @implementation SHViewController
 
 -(void)viewDidLoad; {
   [super viewDidLoad];
-  UIRefreshControl * refreshControl = [[UIRefreshControl alloc] init];
-  [self.collectionView addSubview:refreshControl];
   self.collectionView.alwaysBounceVertical = YES;
   
+  
+  UIRefreshControl * refreshControl = [[UIRefreshControl alloc] init];
+  [self.collectionView addSubview:refreshControl];
+  
+  [refreshControl SH_addControlEvents:UIControlEventValueChanged
+                            withBlock:^(UIControl *sender) {
 
-  [refreshControl SH_addControlEvents:UIControlEventValueChanged withBlock:^(UIControl *sender) {
     [refreshControl beginRefreshing];
-
-    double delayInSeconds = 2.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+    [SHViewController fetchUsersWithBlock:^{
       [refreshControl endRefreshing];
-    });
+    }];
+  
     
   }];
+  
   [refreshControl sendActionsForControlEvents:UIControlEventValueChanged];
   
 
 
+}
+
++(void)fetchUsersWithBlock:(SHFetchCompletionBlock)theBlock; {
+  NSParameterAssert(theBlock);
+  double delayInSeconds = 3.0;
+  dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+  dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+    theBlock();
+  });
 }
 
 -(void)viewDidAppear:(BOOL)animated; {
