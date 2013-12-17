@@ -1,9 +1,0 @@
-platform :ios, '6.0' 
-pod 'SHControlBlocks', :path => '../'
-pod 'SHSegueBlocks'
-
-target :ExampleTests do
-  pod 'SHTestCaseAdditions', :git => "https://github.com/seivan/SHTestCaseAdditions"
-  pod 'SHFastEnumerationProtocols', :git => "https://github.com/PodFactory/SHFastEnumerationProtocols"
-  pod "KIF-next"
-end

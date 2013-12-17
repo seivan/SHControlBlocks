@@ -1,0 +1,33 @@
+PODS:
+  - KIF/Core (2.0.0)
+  - KIF/XCTest (2.0.0):
+    - KIF/Core
+  - SHControlBlocks (1.1.0)
+  - SHObjectUserInfo (1.1.0)
+  - SHSegueBlocks (1.2.0):
+    - SHObjectUserInfo (~> 1.1.0)
+  - SHTestCaseAdditions (1.4.1):
+    - SHTestCaseAdditions/XCTest
+  - SHTestCaseAdditions/XCTest (1.4.1)
+
+DEPENDENCIES:
+  - KIF/XCTest (from `https://github.com/tonyd256/KIF`, branch `xctest`)
+  - SHControlBlocks (from `../`)
+  - SHSegueBlocks
+  - SHTestCaseAdditions
+
+EXTERNAL SOURCES:
+  KIF:
+    :branch: xctest
+    :git: https://github.com/tonyd256/KIF
+  SHControlBlocks:
+    :path: ../
+
+SPEC CHECKSUMS:
+  KIF: 5de8e5eedd49c83778fe326c918f9330123a7412
+  SHControlBlocks: 57e38b52e0f7ed4eef8f1c69e843c3893556d333
+  SHObjectUserInfo: 3dfe4af11a45c985088f613813705b8ebd3cc718
+  SHSegueBlocks: 9acc4d9d5f588933693b594cb07dfce4e2c42d2a
+  SHTestCaseAdditions: ff32e10731f37effd08c254e538c3e7998f74921
+
+COCOAPODS: 0.28.0
