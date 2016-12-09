@@ -1,3 +1,5 @@
+Deprecated, please use [RxCocoa](https://github.com/ReactiveX/RxSwift) 
+
 SHControlBlocks
 ==========
 [![CI Status](https://img.shields.io/travis/seivan/SHControlBlocks.svg?style=flat)](https://travis-ci.org/seivan/SHControlBlocks)
